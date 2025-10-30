@@ -1,4 +1,3 @@
-// User.java
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -11,17 +10,13 @@ public abstract class User implements HasMenu, Serializable {
     public User() {
         this.userName = "";
         this.PIN = "";
-    }
+    }//End public User
 
     public User(String userName, String PIN) {
         this.userName = userName;
         this.PIN = PIN;
-    }
+    }//End public User String userName String PIN
 
-    /**
-     * Prompted login: asks user for username and PIN via console.
-     * @return true if entered credentials match this user's credentials.
-     */
     public boolean login() {
         Scanner sc = new Scanner(System.in);
         System.out.print("User name: ");
@@ -29,36 +24,29 @@ public abstract class User implements HasMenu, Serializable {
         System.out.print("PIN: ");
         String p = sc.nextLine().trim();
         return login(u, p);
-    }
+    }//End public boolean login
 
-    /**
-     * Direct login with credentials
-     */
     public boolean login(String userName, String PIN) {
         if (this.userName == null || this.PIN == null) {
             return false;
-        }
+        }//End if
         return this.userName.equals(userName) && this.PIN.equals(PIN);
-    }
+    }//End public boolean login String userName, String PIN
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
+    }//End public void setUserName String userName
 
     public String getUserName() {
         return userName;
-    }
+    }//End public String getUSerName
 
     public void setPIN(String PIN) {
         this.PIN = PIN;
-    }
+    }//End public void setPIN String PIN
 
     public String getPIN() {
         return PIN;
-    }
-
-    /**
-     * Each subclass must implement a report string for admin listing, etc.
-     */
+    }//End Public String getPIN
     public abstract String getReport();
-}
+}//End public abstract class User implements HasMenu and Serializable
