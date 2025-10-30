@@ -1,41 +1,35 @@
-// SavingsAccount.java
 public class SavingsAccount extends CheckingAccount {
     private double interestRate; // represented as a decimal (e.g., 0.02 for 2%)
 
     public SavingsAccount() {
         super();
         this.interestRate = 0.0;
-    }
+    }//End SavingAccount
 
     public SavingsAccount(double balance, double interestRate) {
         super(balance);
         this.interestRate = interestRate;
-    }
+    }//End public SavingAccount double balance and double interestRate
 
-    // Quick test
     public static void main(String[] args) {
         SavingsAccount sa = new SavingsAccount(500.00, 0.03);
         sa.start();
-    }
+    }//End public static void main String args
 
     public void calcInterest() {
-        // calculate interest and add to balance
         double interest = balance * interestRate;
         balance += interest;
         System.out.printf("Applied interest of %.2f; new balance: %s%n", interest, getBalanceString());
-    }
+    }//End public void calcInterest
 
     public void setInterestRate(double rate) {
         this.interestRate = rate;
-    }
+    }//End public void setInterestRate double rate
 
     public double getInterestRate() {
         return interestRate;
-    }
+    }//End public double get InterestRate
 
-    // Savings account will reuse CheckingAccount's menu and start for deposits/withdrawals.
-    // If desired, override menu() to customize the printed header.
-    @Override
     public String menu() {
         StringBuilder sb = new StringBuilder();
         sb.append("\nSavings Account\n\n");
@@ -46,5 +40,6 @@ public class SavingsAccount extends CheckingAccount {
         sb.append("3) make a withdrawal\n\n");
         sb.append("Please enter 0-3: ");
         return sb.toString();
-    }
-}
+    }//End public String menu
+
+}//End public class SavingAccount extends CheckingAccount
