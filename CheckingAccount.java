@@ -1,4 +1,3 @@
-// CheckingAccount.java
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,19 +6,17 @@ public class CheckingAccount implements HasMenu {
 
     public CheckingAccount() {
         this.balance = 0.0;
-    }
+    }//End public CheckingAccount
 
     public CheckingAccount(double balance) {
         this.balance = balance;
-    }
+    }//End public CheckingAccount double balance
 
-    // For quick testing
     public static void main(String[] args) {
         CheckingAccount acct = new CheckingAccount(100.0);
         acct.start();
-    }
+    }//End public static void main String args
 
-    @Override
     public String menu() {
         StringBuilder sb = new StringBuilder();
         sb.append("\nAccount menu\n\n");
@@ -29,9 +26,8 @@ public class CheckingAccount implements HasMenu {
         sb.append("3) make a withdrawal\n\n");
         sb.append("Please enter 0-3: ");
         return sb.toString();
-    }
+    }//End public String menu
 
-    @Override
     public void start() {
         Scanner sc = new Scanner(System.in);
         boolean done = false;
@@ -53,28 +49,29 @@ public class CheckingAccount implements HasMenu {
                     break;
                 default:
                     System.out.println("Invalid selection. Try again.");
-            }
-        }
-    }
+            }//End switch
+
+        }//End While
+
+    }//End public void start
 
     public double getBalance() {
         return balance;
-    }
+    }//End public double getBalance
 
     public String getBalanceString() {
         return String.format("$%.2f", balance);
-    }
+    }//End public String getBalanceString
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
+    }//End public void setBalance double balnce
 
     public void checkBalance() {
         System.out.println("Checking balance...");
         System.out.println("Current balance: " + getBalanceString());
-    }
+    }//End public void checkBalance
 
-    // Helper to read a double safely; returns 0.0 on invalid input
     protected double getDouble(Scanner sc) {
         try {
             String token = sc.nextLine().trim();
@@ -82,18 +79,19 @@ public class CheckingAccount implements HasMenu {
         } catch (NumberFormatException e) {
             System.out.println("Invalid number entered. Using 0.0.");
             return 0.0;
-        }
-    }
+        }//End try and catch
 
-    // Helper to read an int safely; returns -1 on invalid input
+    }//End protected double getDOuble Scanner sc
+
     protected int getInt(Scanner sc) {
         try {
             String token = sc.nextLine().trim();
             return Integer.parseInt(token);
         } catch (NumberFormatException e) {
             return -1;
-        }
-    }
+        }//End try and catch
+
+    }//End protected int getInt Scanner sc
 
     public void makeDeposit(Scanner sc) {
         System.out.println("Making a deposit...");
@@ -102,10 +100,10 @@ public class CheckingAccount implements HasMenu {
         if (amt <= 0) {
             System.out.println("Deposit amount must be positive.");
             return;
-        }
+        }//End if
         balance += amt;
         System.out.println("New balance: " + getBalanceString());
-    }
+    }//End public void makeDeposit Scanner sc
 
     public void makeWithdrawal(Scanner sc) {
         System.out.println("Making a withdrawal...");
@@ -114,12 +112,13 @@ public class CheckingAccount implements HasMenu {
         if (amt <= 0) {
             System.out.println("Withdrawal amount must be positive.");
             return;
-        }
+        }//End if
         if (amt > balance) {
             System.out.println("Insufficient funds. Current balance: " + getBalanceString());
             return;
-        }
+        }//End if
         balance -= amt;
         System.out.println("New balance: " + getBalanceString());
-    }
-}
+    }//End public void makeWithdrawal Scanner sc
+
+}//End public class CheckingAccount implements HasMenu
